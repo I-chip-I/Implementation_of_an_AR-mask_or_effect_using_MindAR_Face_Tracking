@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementation of an AR-mask or effect using MindAR Face Tracking</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
+</head>
+<body>
+    <a-scene 
+        mindar-face
+        color-space="sRGB"
+        renderer="colorManagement: true, physicallyCorrectLights"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: false">
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+        <a-light type="ambient" color="#ffffff" intensity="0.6"></a-light>
+        <a-light type="directional" color="#ffffff" intensity="0.8" position="1 2 1"></a-light>
+
+        <a-entity mindar-face-target="anchorIndex: 168">
+            <a-gltf-model
+                mindar-face-occluder
+                position="0 -0.3 0.15"
+                rotation="0 0 0"
+                scale="0.067 0.067 0.067"
+                src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/sparkar/headOccluder.glb">
+            </a-gltf-model>
+
+
+            <a-gltf-model src="./steampunk_glasses_front.glb" position="0 0 -0.33" scale="0.8 0.8 0.8"></a-gltf-model>
+            <a-gltf-model src="./steampunk_glasses_back.glb" position="0 0 -0.37" scale="0.8 0.8 1.1"></a-gltf-model>
+        </a-entity>
+
+    </a-scene>
+</body>
+</html>
